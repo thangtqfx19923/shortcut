@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gắn Link Shortcut</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      .shortcut-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .shortcut-link:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gắn Link Shortcut</h1>
+    <p>Nhấp vào liên kết bên dưới để thực hiện phím tắt:</p>
+    <a href="#" id="shortcut-link" class="shortcut-link">Shortcut</a>
+
+    <script>
+      // Lấy tên phím tắt từ URL của trang
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      var shortcutName = urlParams.get("name");
+
+      // Xây dựng URL của phím tắt
+      var shortcutURL = "shortcuts://run-shortcut?name=" + shortcutName;
+
+      // Gắn URL vào liên kết
+      var shortcutLink = document.getElementById("shortcut-link");
+      shortcutLink.setAttribute("href", shortcutURL);
+    </script>
+  </body>
+</html>
